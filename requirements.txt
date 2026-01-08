@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+pydantic-settings
+pydantic
+groq>=0.12.0
+langchain
+langchain-groq
+starlette
+sqlalchemy>=2.0.0
+redis>=5.0.0
+psycopg[binary]>=3.1.0
+booktype
+alembic>=1.13
+langchain_openai
+langchain_core

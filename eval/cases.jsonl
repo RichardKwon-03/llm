@@ -1,0 +1,3 @@
+{"id":"t1","prompt":"Redis distributed lock pitfalls","template":"english","version":1,"expect_lang":"en","must_contain":["TTL","lock"],"must_not_contain":["node1","node2"]}
+{"id":"t2","prompt":"Redis 분산락 주의점 알려줘","template":"default","version":1,"expect_lang":"ko","must_contain":["TTL"],"must_not_contain":[]}
+{"id":"t3","prompt":"Hello","template":"english","version":1,"expect_lang":"en","must_contain":["Hello"],"must_not_contain":["안녕"]}

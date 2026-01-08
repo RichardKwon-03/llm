@@ -1,0 +1,6 @@
+.env
+.idea
+pg_data
+mongo_data
+redis_data
+results.jsonl
