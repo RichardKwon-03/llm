@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from app.rag.services.retrieval_service import RetrievalService
+from app.services.retrieval_service import RetrievalService
 
 
 class RagService:

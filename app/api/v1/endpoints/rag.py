@@ -3,8 +3,8 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends
 
 from app.schemas.rag import RagIngestRequest, RagIngestResponse, RagSearchRequest, RagSearchResponse, RagMatch
-from app.rag.services.ingestion_service import IngestionService
-from app.rag.services.rag_service import RagService
+from app.services.ingestion_service import IngestionService
+from app.services.rag_service import RagService
 from app.core.container import get_ingestion_service, get_rag_service
 
 
