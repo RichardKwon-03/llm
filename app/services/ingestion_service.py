@@ -1,22 +1,22 @@
 from __future__ import annotations
 
-from app.rag.loaders.base import DocumentLoader
+from typing import Any, Dict, Optional
+
+from app.rag.types import Document
 from app.rag.chunkers.base import Chunker
 from app.rag.embedders.base import Embedder
 from app.rag.vectorstores.base import VectorStore
-from app.rag.types import IngestResult
 
 
 class IngestionService:
-    def __init__(self, loader: DocumentLoader, chunker: Chunker, embedder: Embedder, store: VectorStore):
-        self._loader = loader
+    def __init__(self, chunker: Chunker, embedder: Embedder, vectorstore: VectorStore):
         self._chunker = chunker
         self._embedder = embedder
-        self._store = store
+        self._vs = vectorstore
 
-    def ingest(self, *, source: str) -> IngestResult:
-        doc = self._loader.load(source=source)
+    def ingest_text(self, *, source_id: str, text: str, metadata: Optional[Dict[str, Any]] = None) -> int:
+        doc = Document(id=source_id, text=text, metadata=metadata or {})
         chunks = self._chunker.chunk(doc)
-        vectors = self._embedder.embed_texts([c.text for c in chunks])
-        self._store.upsert_chunks(chunks=chunks, vectors=vectors)
-        return IngestResult(document_id=doc.id, chunk_count=len(chunks))
+        vectors = self._embedder.embed_chunks(chunks)
+        self._vs.upsert(source_id=source_id, chunks=chunks, vectors=vectors)
+        return len(chunks)

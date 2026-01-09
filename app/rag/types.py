@@ -17,7 +17,7 @@ class Document:
 @dataclass(frozen=True)
 class Chunk:
     id: str
-    document_id: str
+    doc_id: str
     text: str
     metadata: Metadata
 
@@ -30,7 +30,7 @@ class ScoredChunk:
 
 @dataclass(frozen=True)
 class IngestResult:
-    document_id: str
+    doc_id: str
     chunk_count: int
 
 
@@ -40,3 +40,5 @@ class RetrieveResult:
     matches: List[ScoredChunk]
     used_top_k: int
     score_threshold: Optional[float]
+
+Vector = List[float]

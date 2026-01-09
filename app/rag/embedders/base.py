@@ -2,13 +2,10 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from typing import List
+from app.rag.types import Chunk, Vector
 
 
 class Embedder(ABC):
     @abstractmethod
-    def embed_texts(self, texts: List[str]) -> List[List[float]]:
-        raise NotImplementedError
-
-    @abstractmethod
-    def embed_query(self, query: str) -> List[float]:
+    def embed_chunks(self, chunks: List[Chunk]) -> List[Vector]:
         raise NotImplementedError
